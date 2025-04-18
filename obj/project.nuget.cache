@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "ELsTKNAWaOA=",
+  "success": true,
+  "projectFilePath": "D:\\Victor\\Estudos\\projetos\\ProjetoDBZ\\ProjetoDBZ.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\scalar.aspnetcore\\1.2.45\\scalar.aspnetcore.1.2.45.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\7.1.0\\swashbuckle.aspnetcore.swaggerui.7.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
