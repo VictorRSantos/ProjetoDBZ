@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjetoDBZ.Models
+namespace ProjetoDBZ.src.Core.Entities
 {
     public class LoginModel
     {

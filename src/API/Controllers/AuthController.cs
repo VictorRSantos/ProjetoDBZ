@@ -2,9 +2,9 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using ProjetoDBZ.Models;
+using ProjetoDBZ.src.Core.Entities;
 
-namespace ProjetoDBZ.Controllers
+namespace ProjetoDBZ.src.API.Controllers
 {
     [ApiController]
     [Route("api/auth")]

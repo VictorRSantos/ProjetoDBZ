@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using ProjetoDBZ.Data;
+using ProjetoDBZ.src.Infrastructure.Persistence;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ProjetoDBZ.src.Core.Interfaces;
+using ProjetoDBZ.src.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +67,9 @@ builder.Services.AddSwaggerGen(options =>
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+
+builder.Services.AddScoped<IPersonagemRepository, PersonagemRepository>();
 
 var app = builder.Build();
 

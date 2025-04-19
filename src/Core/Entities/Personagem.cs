@@ -1,5 +1,5 @@
-namespace ProjetoDBZ.Models
-{
+namespace ProjetoDBZ.src.Core.Entities
+{   
     public class Personagem
     {
         public int Id { get; set; }

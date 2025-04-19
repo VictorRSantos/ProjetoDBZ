@@ -1,8 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
-using ProjetoDBZ.Models;
+using ProjetoDBZ.src.Core.Entities;
 
-namespace ProjetoDBZ.Data
+namespace ProjetoDBZ.src.Infrastructure.Persistence
 {
     public class AppDbContext : DbContext
     {

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProjetoDBZ.Data;
-using ProjetoDBZ.Models;
+using ProjetoDBZ.src.Infrastructure.Persistence;
+using ProjetoDBZ.src.Core.Entities;
 
-namespace ProjetoDBZ.Controllers
+namespace ProjetoDBZ.src.API.Controllers
 {
     [ApiController]
     [Route("api/personagens")]
