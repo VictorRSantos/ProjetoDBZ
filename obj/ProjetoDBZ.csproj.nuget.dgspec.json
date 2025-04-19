@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[8.0.15, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[8.8.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql.Json.Microsoft": {
               "target": "Package",
               "version": "[8.0.3, )"
@@ -70,6 +74,10 @@
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.8.0, )"
             }
           },
           "imports": [
