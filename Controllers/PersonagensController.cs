@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoDBZ.Data;
 using ProjetoDBZ.Models;
@@ -5,7 +6,7 @@ using ProjetoDBZ.Models;
 namespace ProjetoDBZ.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/personagens")]
     public class PersonagensController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
@@ -15,7 +16,7 @@ namespace ProjetoDBZ.Controllers
             _appDbContext = appDbContext;            
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<IActionResult> AddPersonagem(Personagem personagem)
         {
             if (personagem == null)

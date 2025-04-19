@@ -20,7 +20,7 @@ namespace ProjetoDBZ.Controllers
             if(model.UserName == "victor" && model.Password == "123456")
             {
 
-                var secrectKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecrectKey@345"));
+                var secrectKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("minhaChaveSecreta"));
                 var signingCredentials = new SigningCredentials(secrectKey, SecurityAlgorithms.HmacSha256);
 
                 var tokenOptions = new JwtSecurityToken(
