@@ -91,6 +91,6 @@ src/
 ## 👨‍💻 Autor
 
 Victor Rodrigues dos Santos  
-Pleno Developer💡
+Pleno Developer • C# • Python💡
 
 ---
