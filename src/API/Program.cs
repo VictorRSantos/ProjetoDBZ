@@ -6,30 +6,48 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ProjetoDBZ.src.Core.Interfaces;
 using ProjetoDBZ.src.Infrastructure.Repositories;
+using ProjetoDBZ.src.Infrastructure.Identity;
+using ProjetoDBZ.src.Application.Services;
+using ProjetoDBZ.src.Shared.Configuration;
+using ProjetoDBZ.src.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuração do Banco MySQL
+var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+// Injeção de Dependências
+builder.Services.AddScoped<IPersonagemRepository, PersonagemRepository>();
+builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<PersonagemService>();
+
+// // JWT Authentication
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
+// builder.Services.AddAuthentication(opt =>
+// {
+//     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//     opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+// })
+// .AddJwtBearer(opt =>
+// {
+//     opt.TokenValidationParameters = new TokenValidationParameters
+//     {
+//         ValidateIssuer = true,
+//         ValidateAudience = true,
+//         ValidateLifetime = true,
+//         ValidateIssuerSigningKey = true,
+//         ValidIssuer = "DBZ",
+//         ValidAudience = "DBZ",
+//         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("kTHdMNbEKC1YeCMDei1dFdWMAXakiI3mXQKFuivJOJVtDrQ8YxCEJeUQEFEIea5FeBuhfBAHnz24wbK4HsJmtwDIRsSCoZARbmTV3y3HhCARPXnzCerz7hSHm1EnkqhVdFAVRfIazsZrrjaIPrSKlqOLXKEWRB8VJMX0jzNvWJufOwpkCsVrEyE362vSx9byiAmAqqgDvJiGkujEQRwxBgzsjZd7CiTnA4XBbvQHo4XAv9QESdy3t4B2NjM8v3MR"))
+//     };
+// });
+
 // Add services to the container.
 builder.Services.AddControllers();
-
-builder.Services.AddAuthentication(opt =>
-{
-    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(opt =>
-{
-    opt.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = "DBZ",
-        ValidAudience = "http://localhost:5076",
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("minhaChaveSecreta"))
-    };
-});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -64,12 +82,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
-
-builder.Services.AddScoped<IPersonagemRepository, PersonagemRepository>();
+// Binding JWT settings from appsettings.json
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
 
 var app = builder.Build();
 

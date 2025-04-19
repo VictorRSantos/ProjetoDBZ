@@ -14,9 +14,10 @@ namespace ProjetoDBZ.src.Infrastructure.Repositories
         {
             _context = context;
         }
-        public Task AddPersonagemAsync(Personagem personagem)
+        public async Task AddPersonagemAsync(Personagem personagem)
         {
-            throw new NotImplementedException();
+            await _context.DBZ.AddAsync(personagem);            
+            await _context.SaveChangesAsync();
         }
 
         public Task DeletePersonagemAsync(int id)
@@ -27,10 +28,8 @@ namespace ProjetoDBZ.src.Infrastructure.Repositories
         public async Task<List<Personagem>> GetAllPersonagensAsync() =>
             await _context.DBZ.ToListAsync();
 
-        public Task<Personagem> GetPersonagemByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<Personagem> GetPersonagemByIdAsync(int id) =>
+            await _context.DBZ.FindAsync(id);
 
         public Task UpdatePersonagemAsync(Personagem personagem)
         {
