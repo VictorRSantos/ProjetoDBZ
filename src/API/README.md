@@ -28,6 +28,7 @@ Este projeto foi criado com o objetivo de revisar e reforçar conhecimentos em d
 
 🧱 Estrutura de Pastas Recomendada
 
+```
 src/
 │
 ├── Core/                             # Camada de domínio (regras de negócio puras)
@@ -67,6 +68,7 @@ src/
 └── Shared/                           # Configurações e utilitários compartilhados
     └── Configuration/
         └── JwtSettings.cs
+```
 
 
 ## 🔐 Autenticação JWT
@@ -89,6 +91,6 @@ src/
 ## 👨‍💻 Autor
 
 Victor Rodrigues dos Santos  
-Pleno Developer💡
+Pleno Developer • C# • Python💡
 
 ---
